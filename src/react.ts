@@ -108,8 +108,13 @@ const createImpl = <T>(createState: StateCreator<T, [], []>) => {
   return useBoundStore
 }
 
-export const create = (<T>(createState: StateCreator<T, [], []> | undefined) =>
-  createState ? createImpl(createState) : createImpl) as Create
+export const create = (<T>(
+  createState: StateCreator<T, [], []> | undefined
+) => {
+  // STUDY: seda 入口函数
+  debugger
+  return createState ? createImpl(createState) : createImpl
+}) as Create
 
 /**
  * @deprecated Use `import { create } from 'zustand'`

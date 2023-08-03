@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, createStore } from 'zustand'
 // eslint-disable-next-line import/extensions
 import { immer } from 'zustand/middleware/immer'
 
@@ -27,5 +27,39 @@ const useBearStore = create(
     increaseCount: () => set((state) => ({ count: state.count + 1 })),
   }))
 )
+
+const newLocal0 = createStore<{
+  count: number
+}>((set) => {
+  return {
+    count: 1,
+    inc() {
+      set((state) => ({ count: state.count + 1 }))
+    },
+  }
+})
+
+newLocal0.getState().count
+
+const newLocal = createStore<{
+  count: number
+}>()((set) => {
+  return {
+    count: 1,
+    inc() {
+      set((state) => ({ count: state.count + 1 }))
+    },
+  }
+})
+
+newLocal.getState().count
+
+console.log('sedationh ', newLocal, newLocal.getState())
+
+const state = newLocal.getState() as any
+
+state.inc()
+
+console.log('sedationh ', newLocal, newLocal.getState())
 
 export default useBearStore
