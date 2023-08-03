@@ -11,3 +11,4 @@ package-lock.json
 coverage/
 .rpt2_cache/
 .idea
+.parcel-cache/
