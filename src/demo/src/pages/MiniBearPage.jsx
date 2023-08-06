@@ -1,18 +1,8 @@
 import React, { memo } from 'react'
-import { create } from '../mini/react.ts'
+// import { create } from '../mini/react.ts'
+import { create } from '../mini-js/react.js'
 
-interface BearState {
-  bears: number // 状态值
-  count: number
-
-  increase: (by?: number) => void
-  decrease: (by?: number) => void
-  reset: () => void
-
-  increaseCount: () => void
-}
-
-const useBearStore = create<BearState>((set) => ({
+const useBearStore = create((set) => ({
   bears: 0,
   count: 100,
   increase: (by = 1) => set((state) => ({ bears: state.bears + by })),
@@ -48,8 +38,7 @@ export default function MiniBearsPage() {
 
 const Child = memo(() => {
   console.log('sedationh Child render')
-  // const bears = useBearStore((state) => state.bears)
-  const { bears } = useBearStore()
+  const bears = useBearStore((state) => state.bears)
 
   return (
     <div>
