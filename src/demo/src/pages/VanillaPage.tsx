@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createStore } from '../mini/vanilla.ts'
 
-const vStore = createStore<{
-  count: number
-  increase: () => void
-}>((set) => ({
+const vStore = createStore((set) => ({
   count: 0,
   increase: () => set((state) => ({ count: state.count + 1 })),
 }))
